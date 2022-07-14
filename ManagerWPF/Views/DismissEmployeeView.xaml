@@ -1,0 +1,53 @@
+﻿<mah:MetroWindow x:Class="ManagerWPF.Views.DismissEmployeeView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+        Dialog:DialogParticipation.Register="{Binding}"
+        xmlns:local="clr-namespace:ManagerWPF.Views"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Name="DismissEmployeeWindow"
+        Title="DismissEmployeeView" Height="300" Width="500">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Zwolnij pracownika" FontSize="20" Margin="5"/>
+
+        <StackPanel Orientation="Vertical" Grid.Row="1">
+
+            <Label Content="Dane:" Margin="5"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <Label Content="{Binding Employee.EmployeeId}" Margin="5"/>
+                <Label Content="{Binding Employee.FirstName}" Margin="5"/>
+                <Label Content="{Binding Employee.LastName}" Margin="5"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <Label Content="Zarobki: " Margin="5"/>
+                <Label Content="{Binding Employee.Money}" Margin="5"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <Label Content="Zatrudniony: " Margin="5"/>
+                <Label Content="{Binding Employee.DateToEmployee}" Margin="5"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <Label Content="Data Zwolnienia:" Grid.Row="4" Margin="5"/>
+                <DatePicker SelectedDate="{Binding Employee.DateDismiss, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Margin="5" />
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Right">
+            <Button Content="Anuluj" Command="{Binding CloseCommand}" CommandParameter="{Binding ElementName=DismissEmployeeWindow}" Width="100" Height="25" Margin="5"/>
+            <Button Content="Akceptuj" Command="{Binding ConfirmCommand}" CommandParameter="{Binding ElementName=DismissEmployeeWindow}" Width="100" Height="25" Margin="5"/>
+        </StackPanel>
+    </Grid>
+</mah:MetroWindow>

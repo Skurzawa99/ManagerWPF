@@ -1,0 +1,48 @@
+﻿<mah:MetroWindow x:Class="ManagerWPF.Views.ProportiesView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:ManagerWPF.Views"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Name="PropertiesWindow"
+        Title="Ustawienia" Height="250" Width="350">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="1" Content="Adres serwera:" Margin="5" />
+        <TextBox Text="{Binding UserProporties.SerwerAdress, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Grid.Column="1" Grid.Row="1" Margin="5" />
+
+        <Label Grid.Row="2" Content="Nazwa serwera:" Margin="5" />
+        <TextBox Text="{Binding UserProporties.SerwerName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Grid.Column="1" Grid.Row="2" Margin="5" />
+
+        <Label Grid.Row="3" Content="Nazwa bazy danych:" Margin="5" />
+        <TextBox Text="{Binding UserProporties.DatabaseName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Grid.Column="1" Grid.Row="3" Margin="5" />
+
+        <Label Grid.Row="4" Content="Użytkownik:" Margin="5" />
+        <TextBox Text="{Binding UserProporties.UserName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Grid.Column="1" Grid.Row="4" Margin="5" />
+
+        <Label Grid.Row="5" Content="Hasło:" Margin="5" />
+        <TextBox Text="{Binding UserProporties.UserPassword, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Grid.Column="1" Grid.Row="5" Margin="5" />
+
+        <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Right" >
+            <Button Command="{Binding CloseCommand}" CommandParameter="{Binding ElementName=PropertiesWindow}" Content="Anuluj" Width="100" Height="25" Margin="5"/>
+            <Button Command="{Binding ConfirmCommand}" CommandParameter="{Binding ElementName=PropertiesWindow}" Content="Akceptuj" Width="100" Height="25" Margin="5"/>
+        </StackPanel>
+
+    </Grid>
+</mah:MetroWindow>
